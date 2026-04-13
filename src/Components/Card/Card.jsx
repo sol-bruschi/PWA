@@ -1,23 +1,33 @@
 import "./Styles.css";
 import { BotonAccion } from "./../Button/Button";
 import { Title } from "./../Title/Title";
+import { useNavigate } from "react-router-dom";
+
 // a esta card le quiero pasar toda la info posible
-export const CardPrincipal = ({ urlImagen, titulo, iconoTitulo, detalle }) => {
+export const CardPrincipal = ({ pelicula, iconoTitulo }) => {
+  const navigate = useNavigate();
+
   return (
     <div className="cardPrincipal">
       <div className="imagen">
-        <img src={urlImagen} alt={titulo} />
+        <img src={pelicula.urlImagen} alt={pelicula.titulo} />
       </div>
       <div className="titulo">
-        <Title text={titulo} icon={iconoTitulo}></Title>
+        <Title text={pelicula.titulo} icon={iconoTitulo}></Title>
       </div>
-      <div className="detalle">
-        <p>{detalle}</p>
+      <div className="director">
+        <Title text={pelicula.director} icon={iconoTitulo}></Title>
+      </div>
+      <div className="anio">
+        <Title text={pelicula.anio} icon={iconoTitulo}></Title>
+      </div>
+      <div className="sinopsis">
+        <p>{pelicula.sinopsis}</p>
       </div>
       <div className="botones">
         <BotonAccion
           texto="Editar"
-          onClick={() => alert("Editar peli")}
+          onClick={() => navigate(`/edit/${pelicula.titulo}`)}
         ></BotonAccion>
         <BotonAccion
           texto="Eliminar"
