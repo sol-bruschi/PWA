@@ -8,18 +8,20 @@ export const CardPrincipal = ({ pelicula, iconoTitulo }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="cardPrincipal">
+    <div className="pelicula-card">
       <div className="imagen">
         <img src={pelicula.urlImagen} alt={pelicula.titulo} />
       </div>
-      <div className="titulo">
+      <div className="card-header">
         <Title text={pelicula.titulo} icon={iconoTitulo}></Title>
       </div>
-      <div className="director">
-        <Title text={pelicula.director} icon={iconoTitulo}></Title>
-      </div>
-      <div className="anio">
-        <Title text={pelicula.anio} icon={iconoTitulo}></Title>
+      <div className="info-secundaria">
+        <div className="director">
+          <span>{pelicula.director}</span>
+        </div>
+        <div className="anio">
+          <span>{pelicula.anio}</span>
+        </div>
       </div>
       <div className="sinopsis">
         <p>{pelicula.sinopsis}</p>

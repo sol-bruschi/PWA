@@ -7,7 +7,7 @@ export const Create = () => {
   };
 
   return (
-    <div>
+    <div className="home-container">
       <h2>Agregar nueva película</h2>
 
       <Formulario alEnviar={guardarPelicula} />
