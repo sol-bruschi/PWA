@@ -12,7 +12,6 @@ export const Home = () => {
   return (
     <div>
       <h1>Probando mis componentes</h1>
-      {/* probando vista de la tarjeta */}
       <BotonAccion texto={"Agregar"} onClick={irACreate}></BotonAccion>
       <CardPrincipal
         pelicula={{
