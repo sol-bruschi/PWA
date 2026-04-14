@@ -1,0 +1,24 @@
+:root {
+  --bg-app: #ffffff; /* Fondo general */
+  --bg-input: #f3f4f6; /* Fondo del buscador y filtros */
+  --text-dark: #111827; /* Títulos negros */
+  --text-gray: #6b7280; /* Textos secundarios grises */
+  --border-color: #e5e7eb; /* Bordes claritos de las tarjetas */
+  --btn-dark: #0f172a; /* El negro azulado del botón Agregar */
+  --radius-md: 8px;
+  --radius-lg: 12px;
+}
+
+body {
+  background-color: var(--bg-app);
+  color: var(--text-dark);
+  font-family: 'Inter', system-ui, sans-serif; /* fuentes */
+  margin: 0;
+  padding: 20px; /* Para que no quede pegado a los bordes */
+}
+
+/* Un contenedor central para que no se estire al infinito en monitores grandes */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}

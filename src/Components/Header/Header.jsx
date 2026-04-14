@@ -1,8 +1,15 @@
+import "./Styles.css";
+import { Title } from "../Title/Title";
+
 export const Header = () => {
   return (
-    <header>
-        <img src="./../../../public/logo.png" alt="logo" />
-      <h1>Gestor de películas</h1>
+    <header className="header-container">
+      <div className="header-logo">
+        <img src="/logo.png" alt="logo" />
+      </div>
+      <div className="header-titulo">
+        <Title text={"Gestor de películas"} />
+      </div>
       <nav></nav>
     </header>
   );

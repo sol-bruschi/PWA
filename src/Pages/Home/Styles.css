@@ -1,0 +1,67 @@
+/* Contenedor principal del Home */
+.home-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Encabezado del Home (Título y botón Agregar) */
+.home-header {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+/* Área de filtros (Buscador y Selects) */
+/* Agregalo aunque sea solo el div por ahora para reservar el espacio */
+.filtros-seccion {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 2.5rem;
+  background-color: #f9fafb;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.filtros-row {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* LA MAGIA: Las dos columnas de la muestra */
+.columnas-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+  gap: 30px;
+  align-items: start;
+}
+
+/* Títulos de las columnas (Por Ver / Visto) */
+.columna-titulo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #f3f4f6;
+  padding-bottom: 10px;
+}
+
+.contador-badge {
+  font-size: 0.8rem;
+  background-color: #f3f4f6;
+  color: #6b7280;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* Responsive: si la pantalla es chica, una columna abajo de la otra */
+@media (max-width: 768px) {
+  .columnas-grid {
+    grid-template-columns: 1fr;
+  }
+}
