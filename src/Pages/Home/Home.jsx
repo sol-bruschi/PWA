@@ -3,62 +3,74 @@ import { BotonAccion } from "../../Components/Button/Button";
 import { useNavigate } from "react-router-dom";
 import "./Styles.css";
 
-export const Home = () => {
-  //uso navigate para poder ir del home a create
+export const Home = ({ contenidos }) => {
   const navigate = useNavigate();
+  
   const irACreate = () => {
     navigate("/create");
   };
 
+  const listaPorVer = contenidos.filter(item => item.visto === false);
+  const listaVistas = contenidos.filter(item => item.visto === true);
+
   return (
     <div className="home-container">
       <header className="home-header">
-        <BotonAccion texto={"+ Nueva"} onClick={irACreate}></BotonAccion>
+        <BotonAccion texto={"+ Nueva"} onClick={irACreate} />
       </header>
+
       <section className="filtros-seccion">
-        <div className="buscador-simulado">
-          🔍 Buscar por título o director...
-        </div>
+        <div className="buscador-simulado">🔍 Buscar por título o director...</div>
         <div className="filtros-row">
           <span>Filtro Género 🔽</span>
           <span>Filtro Tipo 🔽</span>
           <span>Orden 🔽</span>
         </div>
       </section>
-      {/* 3. El Grid de dos columnas */}
+
       <main className="columnas-grid">
         
         {/* Columna IZQUIERDA: Por Ver */}
         <section className="columna">
           <div className="columna-titulo">
             <span>Por Ver</span>
-            <span className="contador-badge">1 título</span>
+            <span className="contador-badge">{listaPorVer.length} títulos</span>
           </div>
           
-          <CardPrincipal
-            pelicula={{
-              titulo: "Matrix",
-              sinopsis: "Un hacker descubre la verdad sobre su realidad.",
-              director: "Wachowski",
-              anio: "1999",
-              urlImagen: "./../../../public/favicon.svg",
-            }}
-            iconoTitulo={"🎬"}
-          />
+          {listaPorVer.length === 0 ? (
+            <p className="mensaje-vacio">No hay películas pendientes.</p>
+          ) : (
+            listaPorVer.map((peli) => (
+              <CardPrincipal
+                key={peli.id}
+                pelicula={peli}
+                iconoTitulo={peli.tipo === "serie" ? "📺" : "🎬"}
+              />
+            ))
+          )}
         </section>
 
         {/* Columna DERECHA: Visto */}
         <section className="columna">
           <div className="columna-titulo">
             <span>Visto</span>
-            <span className="contador-badge">0 títulos</span>
+            <span className="contador-badge">{listaVistas.length} títulos</span>
           </div>
-          {/* Aquí irían las pelis ya vistas */}
-          <p style={{color: '#999', textAlign: 'center'}}>No hay películas vistas todavía.</p>
+          
+          {listaVistas.length === 0 ? (
+            <p className="mensaje-vacio">No hay películas vistas todavía.</p>
+          ) : (
+            listaVistas.map((peli) => (
+              <CardPrincipal
+                key={peli.id}
+                pelicula={peli}
+                iconoTitulo={peli.tipo === "serie" ? "📺" : "🎬"}
+              />
+            ))
+          )}
         </section>
 
       </main>
-
     </div>
   );
 };
