@@ -1,6 +1,5 @@
 .header-container {
-  margin-left: 15dvh;
-  margin-right: 15dvh;
+
   display: flex;
   align-items: center;
   padding: 1rem 2rem;
@@ -13,6 +12,7 @@
 }
 
 .header-logo img {
+  margin-left: 15dvh;
   height: 15dvh;
   width: auto;
   display: block;
