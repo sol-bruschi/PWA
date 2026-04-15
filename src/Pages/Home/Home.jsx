@@ -5,8 +5,7 @@ import { useState } from "react";
 import "./Styles.css";
 import { baseDatos } from "./../../../basePelisSeries"; //base de ejemplo generada con mockaroo
 
-export const Home = () => {
-  //uso navigate para poder ir del home a create
+export const Home = ({ contenidos }) => {
   const navigate = useNavigate();
 
   /* filtros necesarios 
@@ -33,7 +32,7 @@ export const Home = () => {
   };
 
   //lógica de filtrado
-  const peliculasFiltradas = baseDatos.filter((pelicula) => {
+  const peliculasFiltradas = contenidos.filter((pelicula) => {
     // Filtro por Titulo
     const coincideTitulo = pelicula.titulo
       .toLowerCase()
@@ -70,8 +69,9 @@ export const Home = () => {
   return (
     <div className="home-container">
       <header className="home-header">
-        <BotonAccion texto={"+ Nueva"} onClick={irACreate}></BotonAccion>
+        <BotonAccion texto={"+ Nueva"} onClick={irACreate} />
       </header>
+
       <section className="filtros-seccion">
         <div className="buscador-simulado">
           🔍
@@ -146,19 +146,19 @@ export const Home = () => {
         <section className="columna">
           <div className="columna-titulo">
             <span>Por Ver</span>
-            <span className="contador-badge">
-              {peliculasPorVer.length} título
-            </span>
+            <span className="contador-badge">{peliculasPorVer.length} títulos</span>
           </div>
-
-          {peliculasPorVer.slice(0, limite).map((pelicula) => (
-            <CardPrincipal pelicula={pelicula} iconoTitulo={"🍿"} />
-          ))}
-
-          {peliculasPorVer.length === 0 && (
-            <p style={{ color: "#999", textAlign: "center" }}>
-              No hay películas para mostrar.
-            </p>
+          
+          {peliculasPorVer.length === 0 ? (
+            <p className="mensaje-vacio">No hay películas pendientes.</p>
+          ) : (
+            peliculasPorVer.map((peli) => (
+              <CardPrincipal
+                key={peli.id}
+                pelicula={peli}
+                iconoTitulo={peli.tipo === "serie" ? "📺" : "🎬"}
+              />
+            ))
           )}
         </section>
 
@@ -166,18 +166,19 @@ export const Home = () => {
         <section className="columna">
           <div className="columna-titulo">
             <span>Visto</span>
-            <span className="contador-badge">
-              {peliculasVistas.length} títulos
-            </span>
+            <span className="contador-badge">{peliculasVistas.length} títulos</span>
           </div>
-          {peliculasVistas.slice(0, limite).map((pelicula) => (
-            <CardPrincipal pelicula={pelicula} iconoTitulo={"🍿"} />
-          ))}
-
-          {peliculasVistas.length === 0 && (
-            <p style={{ color: "#999", textAlign: "center" }}>
-              No hay películas para mostrar.
-            </p>
+          
+          {peliculasVistas.length === 0 ? (
+            <p className="mensaje-vacio">No hay películas vistas todavía.</p>
+          ) : (
+            peliculasVistas.map((peli) => (
+              <CardPrincipal
+                key={peli.id}
+                pelicula={peli}
+                iconoTitulo={peli.tipo === "serie" ? "📺" : "🎬"}
+              />
+            ))
           )}
         </section>
       </main>
