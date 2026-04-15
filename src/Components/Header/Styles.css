@@ -12,7 +12,7 @@
 }
 
 .header-logo img {
-  margin-left: 15dvh;
+  margin-left: 10%;
   height: 15dvh;
   width: auto;
   display: block;
@@ -20,6 +20,7 @@
 
 .header-titulo {
   flex: 1; /* Hace que el título ocupe el espacio disponible */
+  margin: 5%;
 }
 
 /* Si el componente Title renderiza un h1/h2 con mucho margen, lo reseteamos acá */
