@@ -12,8 +12,8 @@ export const Formulario = ({
     tipo: "",
     id: "",
     rating: "",
-    duracion_min: "",
-    sinopsis: "",
+    url_imagen: "",
+    vista: "",
   },
   textoBoton = "Crear",
 }) => {
@@ -24,10 +24,8 @@ export const Formulario = ({
   const [tipo, setTipo] = useState(valoresIniciales.tipo);
   const [id, setId] = useState(valoresIniciales.id);
   const [rating, setRating] = useState(valoresIniciales.rating);
-  const [duracion_min, setDuracion_min] = useState(
-    valoresIniciales.duracion_min,
-  );
-  const [sinopsis, setSinopsis] = useState(valoresIniciales.sinopsis);
+  const [url_imagen, setUrl_imagen] = useState(valoresIniciales.url_imagen);
+  const [vista, setVista] = useState(valoresIniciales.vista);
 
   const manejarEnvio = (e) => {
     e.preventDefault();
@@ -41,8 +39,8 @@ export const Formulario = ({
       tipo: tipo,
       id: id,
       rating: rating,
-      duracion_min: duracion_min,
-      sinopsis: sinopsis
+      url_imagen: url_imagen,
+      vista: vista,
     };
 
     //envia los datos al componente padre (Create.jsx)
@@ -56,8 +54,8 @@ export const Formulario = ({
     setTipo("");
     setId("");
     setRating("");
-    setDuracion_min("");
-    setSinopsis("");
+    setUrl_imagen("");
+    setVista("");
   };
 
   return (
@@ -94,48 +92,60 @@ export const Formulario = ({
 
       <div className="form-group">
         <label>Género: </label>
-        <input
-          type="text"
+        <select
           value={genero}
           onChange={(e) => setGenero(e.target.value)}
           required
-        />
+        >
+          <option value="" disabled hidden>Seleccione</option>
+          <option value="Acción">Acción</option>
+          <option value="Comedia">Comedia</option>
+          <option value="Terror">Terror</option>
+          <option value="Ciencia Ficción">Ciencia Ficción</option>
+          <option value="Fantasía">Fantasía</option>
+          <option value="Drama">Drama</option>
+          <option value="Infantil">Infantil</option>
+          <option value="Otro">Otro</option>
+        </select>
       </div>
 
       <div className="form-group">
         <label>Tipo: </label>
+        <select value={tipo} onChange={(e) => setTipo(e.target.value)} required>
+          <option value="" disabled hidden>Seleccione</option>
+          <option value="Pelicula">Película</option>
+          <option value="Serie">Serie</option>
+        </select>
+      </div>
+      <div className="form-group">
+        <label>Url de Imagen: </label>
         <input
           type="text"
-          value={tipo}
-          onChange={(e) => setTipo(e.target.value)}
+          value={url_imagen}
+          onChange={(e) => setUrl_imagen(e.target.value)}
           required
         />
       </div>
-      <div className="form-group">
-        <label>Duración (min): </label>
-        <input
-          type="number"
-          value={duracion_min}
-          onChange={(e) => setDuracion_min(e.target.value)}
-          required
-        />
-      </div>
-      <div className="form-group">
+      <div className="form-group pares">
         <label>Rating: </label>
-        <input
-          type="number"
+        <select
           value={rating}
           onChange={(e) => setRating(e.target.value)}
           required
-        />
-      </div>
-      <div className="form-group">
-        <label>Sinopsis: </label>
+        >
+          <option value="" disabled hidden>Seleccione</option>
+          <option value="1">1 ⭐</option>
+          <option value="2">2 ⭐</option>
+          <option value="3">3 ⭐</option>
+          <option value="4">4 ⭐</option>
+          <option value="5">5 ⭐</option>
+        </select>
+        <label>Vista: </label>
         <input
-          type="text"
-          value={sinopsis}
-          onChange={(e) => setSinopsis(e.target.value)}
-          required
+          type="checkbox"
+          checked={vista}
+          onChange={(e) => setVista(e.target.checked)}
+
         />
       </div>
 

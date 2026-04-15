@@ -16,7 +16,7 @@ export function App() {
   useEffect(() => {
     localStorage.setItem("listado-pwa", JSON.stringify(contenidos));
   }, [contenidos]);
-
+console.log("contenidos: ", contenidos)
   return (
     <BrowserRouter>
       <Header />
@@ -32,7 +32,7 @@ export function App() {
             element={<Create contenidos={contenidos} setContenidos={setContenidos} />} 
           />
           <Route 
-            path="/edit/:titulo" 
+            path="/edit/:id" 
             element={<Edit contenidos={contenidos} setContenidos={setContenidos} />} 
           />
         </Routes>

@@ -1,17 +1,28 @@
 import { Formulario } from "./../../Components/Formulario/Formulario";
+import { baseDatos } from "../../../basePelisSeries";
+import { useNavigate, useParams } from "react-router-dom";
 
-export const Edit = () => {
-  // Simulamos la película que ya existe (más adelante esto vendrá de tu lista)
-  const peliculaAEditar = {
-    titulo: "Matrix",
-    director: "Lana Wachowski",
-  };
+export const Edit = ({contenidos}) => {
+  const { id } = useParams(); //viene por url el id
+  const navigate = useNavigate();
+  const peliculaAEditar = contenidos.find(
+    (pelicula) => String(pelicula.id) === String(id),
+  );
 
   // Esta función se ejecuta al hacer click en "Guardar Cambios"
   const actualizarPelicula = (datosEditados) => {
     console.log("¡Película actualizada!", datosEditados);
-    // Aquí luego usarías un navigate('/') para volver al Home
+    navigate("/");
   };
+
+if (!peliculaAEditar) {
+    return (
+      <div className="home-container">
+        <h2>Película no encontrada</h2>
+        <button onClick={() => navigate("/")}>Volver al Inicio</button>
+      </div>
+    );
+  }
 
   return (
     <div className="home-container">
