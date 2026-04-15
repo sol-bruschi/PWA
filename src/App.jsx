@@ -18,7 +18,7 @@ export function App() {
             element = el componente que se va a mostrar */}
           <Route path="/" element={<Home />} />
           <Route path="/create" element={<Create />} />
-          <Route path="/edit/:titulo" element={<Edit />} />
+          <Route path="/edit/:id" element={<Edit />} />
         </Routes>
       </main>
       <Footer />

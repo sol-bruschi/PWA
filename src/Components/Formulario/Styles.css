@@ -15,6 +15,10 @@
   margin-bottom: 1.5rem;
 }
 
+.pares{
+  flex-direction: row;
+}
+
 .form-group label {
   font-size: 0.9rem;
   font-weight: 600;

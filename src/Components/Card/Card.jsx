@@ -10,10 +10,10 @@ export const CardPrincipal = ({ pelicula, iconoTitulo }) => {
   return (
     <div className="pelicula-card">
       <div className="imagen">
-        <img src={pelicula.urlImagen} alt={pelicula.titulo} />
+        <img src={pelicula.url_imagen} alt={pelicula.titulo} />
       </div>
       <div className="card-header">
-        <Title text={pelicula.titulo} icon={iconoTitulo}></Title>
+        <Title text={pelicula.titulo}></Title>
       </div>
       <div className="info-secundaria">
         <div className="director">
@@ -23,13 +23,10 @@ export const CardPrincipal = ({ pelicula, iconoTitulo }) => {
           <span>{pelicula.anio}</span>
         </div>
       </div>
-      <div className="sinopsis">
-        <p>{pelicula.sinopsis}</p>
-      </div>
       <div className="botones">
         <BotonAccion
           texto="Editar"
-          onClick={() => navigate(`/edit/${pelicula.titulo}`)}
+          onClick={() => navigate(`/edit/${pelicula.id}`)}
         ></BotonAccion>
         <BotonAccion
           texto="Eliminar"

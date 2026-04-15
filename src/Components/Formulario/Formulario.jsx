@@ -12,8 +12,8 @@ export const Formulario = ({
     tipo: "",
     id: "",
     rating: "",
-    duracion_min: "",
-    sinopsis: "",
+    url_imagen: "",
+    vista: "",
   },
   textoBoton = "Crear",
 }) => {
@@ -24,10 +24,8 @@ export const Formulario = ({
   const [tipo, setTipo] = useState(valoresIniciales.tipo);
   const [id, setId] = useState(valoresIniciales.id);
   const [rating, setRating] = useState(valoresIniciales.rating);
-  const [duracion_min, setDuracion_min] = useState(
-    valoresIniciales.duracion_min,
-  );
-  const [sinopsis, setSinopsis] = useState(valoresIniciales.sinopsis);
+  const [url_imagen, setUrl_imagen] = useState(valoresIniciales.url_imagen);
+  const [vista, setVista] = useState(valoresIniciales.vista);
 
   const manejarEnvio = (e) => {
     e.preventDefault();
@@ -41,8 +39,8 @@ export const Formulario = ({
       tipo: tipo,
       id: id,
       rating: rating,
-      duracion_min: duracion_min,
-      sinopsis: sinopsis
+      url_imagen: url_imagen,
+      vista: vista,
     };
 
     //envia los datos al componente padre (Create.jsx)
@@ -56,8 +54,8 @@ export const Formulario = ({
     setTipo("");
     setId("");
     setRating("");
-    setDuracion_min("");
-    setSinopsis("");
+    setUrl_imagen("");
+    setVista("");
   };
 
   return (
@@ -112,15 +110,15 @@ export const Formulario = ({
         />
       </div>
       <div className="form-group">
-        <label>Duración (min): </label>
+        <label>Url de Imagen: </label>
         <input
-          type="number"
-          value={duracion_min}
-          onChange={(e) => setDuracion_min(e.target.value)}
+          type="text"
+          value={url_imagen}
+          onChange={(e) => setUrl_imagen(e.target.value)}
           required
         />
       </div>
-      <div className="form-group">
+      <div className="form-group pares">
         <label>Rating: </label>
         <input
           type="number"
@@ -128,13 +126,11 @@ export const Formulario = ({
           onChange={(e) => setRating(e.target.value)}
           required
         />
-      </div>
-      <div className="form-group">
-        <label>Sinopsis: </label>
+        <label>Vista: </label>
         <input
-          type="text"
-          value={sinopsis}
-          onChange={(e) => setSinopsis(e.target.value)}
+          type="checkbox"
+          checked={vista}
+          onChange={(e) => setVista(e.target.checked)}
           required
         />
       </div>
