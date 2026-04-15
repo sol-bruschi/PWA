@@ -32,7 +32,7 @@ export const Home = ({ contenidos }) => {
   };
 
   //lógica de filtrado
-  const peliculasFiltradas = contenidos.filter((pelicula) => {
+  const peliculasFiltradas = baseDatos.filter((pelicula) => {
     // Filtro por Titulo
     const coincideTitulo = pelicula.titulo
       .toLowerCase()
@@ -93,7 +93,8 @@ export const Home = ({ contenidos }) => {
             Género:
             <select
               value={filtroGenero}
-              onChange={(e) => setFiltroGenero(e.target.value)}            >
+              onChange={(e) => setFiltroGenero(e.target.value)}
+            >
               <option value="">Todos</option>
               <option value="Acción">Acción</option>
               <option value="Comedia">Comedia</option>
@@ -146,18 +147,28 @@ export const Home = ({ contenidos }) => {
         <section className="columna">
           <div className="columna-titulo">
             <span>Por Ver</span>
-            <span className="contador-badge">{peliculasPorVer.length} títulos</span>
+            <span className="contador-badge">
+              {peliculasPorVer.length} títulos
+            </span>
           </div>
-          
+
           {peliculasPorVer.length === 0 ? (
             <p className="mensaje-vacio">No hay películas pendientes.</p>
           ) : (
             peliculasPorVer.map((peli) => (
-              <CardPrincipal
-                key={peli.id}
-                pelicula={peli}
-                iconoTitulo={peli.tipo === "serie" ? "📺" : "🎬"}
-              />
+              <div key={peli.id}>
+                <BotonAccion
+                  texto="Marcar como Vista"
+                  onClick={() => setFavorito(peli.id)}
+                  className="boton-vista"
+                />
+                <CardPrincipal
+                  key={peli.id}
+                  pelicula={peli}
+                  iconoTitulo={peli.tipo === "serie" ? "📺" : "🎬"}
+                  className="contenedor-peli"
+                />
+              </div>
             ))
           )}
         </section>
@@ -166,9 +177,11 @@ export const Home = ({ contenidos }) => {
         <section className="columna">
           <div className="columna-titulo">
             <span>Visto</span>
-            <span className="contador-badge">{peliculasVistas.length} títulos</span>
+            <span className="contador-badge">
+              {peliculasVistas.length} títulos
+            </span>
           </div>
-          
+
           {peliculasVistas.length === 0 ? (
             <p className="mensaje-vacio">No hay películas vistas todavía.</p>
           ) : (

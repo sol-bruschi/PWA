@@ -96,6 +96,17 @@
   border-radius: 4px;
 }
 
+.boton-vista {
+  position: absolute;
+  top: 10px; /* Separación desde arriba */
+  right: 10px; /* Separación desde la derecha */
+  z-index: 10; /* Asegura que esté por encima de la imagen */
+}
+
+.contenedor-peli {
+  position: relative;
+}
+
 /* Responsive: si la pantalla es chica, una columna abajo de la otra */
 @media (max-width: 768px) {
   .columnas-grid {
