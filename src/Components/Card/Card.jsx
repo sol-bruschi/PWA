@@ -36,4 +36,3 @@ export const CardPrincipal = ({ pelicula, iconoTitulo }) => {
     </div>
   );
 };
-// una vez que definamos las funciones las colocamos en los alerts que están de prueba

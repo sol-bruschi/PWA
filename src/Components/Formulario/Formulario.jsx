@@ -92,22 +92,28 @@ export const Formulario = ({
 
       <div className="form-group">
         <label>Género: </label>
-        <input
-          type="text"
+        <select
           value={genero}
           onChange={(e) => setGenero(e.target.value)}
           required
-        />
+        >
+          <option value="Acción">Acción</option>
+          <option value="Comedia">Comedia</option>
+          <option value="Terror">Terror</option>
+          <option value="Ciencia Ficción">Ciencia Ficción</option>
+          <option value="Fantasía">Fantasía</option>
+          <option value="Drama">Drama</option>
+          <option value="Infantil">Infantil</option>
+          <option value="Otro">Otro</option>
+        </select>
       </div>
 
       <div className="form-group">
         <label>Tipo: </label>
-        <input
-          type="text"
-          value={tipo}
-          onChange={(e) => setTipo(e.target.value)}
-          required
-        />
+        <select value={tipo} onChange={(e) => setTipo(e.target.value)} required>
+          <option value="Pelicula">Película</option>
+          <option value="Serie">Serie</option>
+        </select>
       </div>
       <div className="form-group">
         <label>Url de Imagen: </label>
@@ -120,12 +126,17 @@ export const Formulario = ({
       </div>
       <div className="form-group pares">
         <label>Rating: </label>
-        <input
-          type="number"
+        <select
           value={rating}
           onChange={(e) => setRating(e.target.value)}
           required
-        />
+        >
+          <option value="1">1 ⭐</option>
+          <option value="2">2 ⭐</option>
+          <option value="3">3 ⭐</option>
+          <option value="4">4 ⭐</option>
+          <option value="5">5 ⭐</option>
+        </select>
         <label>Vista: </label>
         <input
           type="checkbox"

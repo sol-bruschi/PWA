@@ -14,7 +14,6 @@
 }
 
 /* Área de filtros (Buscador y Selects) */
-/* Agregalo aunque sea solo el div por ahora para reservar el espacio */
 .filtros-seccion {
   display: flex;
   flex-direction: column;
@@ -25,13 +24,51 @@
   border-radius: 12px;
 }
 
-.filtros-row {
+.buscador-simulado {
   display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
+  align-items: center; /* Centra la lupa y los inputs verticalmente */
+  gap: 15px; /* Espacio entre la lupa y los inputs */
+  flex-wrap: wrap; /* En celulares, si no entran, bajan de línea */
 }
 
-/* LA MAGIA: Las dos columnas de la muestra */
+.buscador-simulado input[type="text"] {
+  flex: 1; /* Se estiran para ocupar todo el ancho disponible */
+  min-width: 200px; /* Evita que se hagan muy pequeños en pantallas chicas */
+}
+
+.filtros-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.filtros-row span {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Separación entre la palabra y el select/input */
+  font-weight: 500;
+  color: #374151; /* Un gris oscuro para el texto */
+}
+
+.filtros-seccion input,
+.filtros-seccion select {
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: white;
+  outline: none;
+  transition: border-color 0.2s ease; /* Pequeña animación al enfocar */
+}
+
+/* Efecto visual cuando el usuario hace clic en el campo (Focus) */
+.filtros-seccion input:focus,
+.filtros-seccion select:focus {
+  border-color: #3b82f6; /* Borde azul cuando está activo */
+}
+
+/*Las dos columnas*/
 .columnas-grid {
   display: grid;
   grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
