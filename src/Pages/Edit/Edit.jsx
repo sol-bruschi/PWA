@@ -2,10 +2,10 @@ import { Formulario } from "./../../Components/Formulario/Formulario";
 import { baseDatos } from "../../../basePelisSeries";
 import { useNavigate, useParams } from "react-router-dom";
 
-export const Edit = () => {
+export const Edit = ({contenidos}) => {
   const { id } = useParams(); //viene por url el id
   const navigate = useNavigate();
-  const peliculaAEditar = baseDatos.find(
+  const peliculaAEditar = contenidos.find(
     (pelicula) => String(pelicula.id) === String(id),
   );
 

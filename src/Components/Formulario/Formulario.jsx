@@ -97,6 +97,7 @@ export const Formulario = ({
           onChange={(e) => setGenero(e.target.value)}
           required
         >
+          <option value="" disabled hidden>Seleccione</option>
           <option value="Acción">Acción</option>
           <option value="Comedia">Comedia</option>
           <option value="Terror">Terror</option>
@@ -111,6 +112,7 @@ export const Formulario = ({
       <div className="form-group">
         <label>Tipo: </label>
         <select value={tipo} onChange={(e) => setTipo(e.target.value)} required>
+          <option value="" disabled hidden>Seleccione</option>
           <option value="Pelicula">Película</option>
           <option value="Serie">Serie</option>
         </select>
@@ -131,6 +133,7 @@ export const Formulario = ({
           onChange={(e) => setRating(e.target.value)}
           required
         >
+          <option value="" disabled hidden>Seleccione</option>
           <option value="1">1 ⭐</option>
           <option value="2">2 ⭐</option>
           <option value="3">3 ⭐</option>
@@ -142,7 +145,7 @@ export const Formulario = ({
           type="checkbox"
           checked={vista}
           onChange={(e) => setVista(e.target.checked)}
-          required
+
         />
       </div>
 

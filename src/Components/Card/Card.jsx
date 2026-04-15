@@ -11,6 +11,7 @@ export const CardPrincipal = ({ pelicula, iconoTitulo }) => {
     <div className="pelicula-card">
       <div className="imagen">
         <img src={pelicula.url_imagen} alt={pelicula.titulo} />
+        {/* <img src="https://picsum.photos/300/450" alt={pelicula.titulo} /> */}
       </div>
       <div className="card-header">
         <Title text={pelicula.titulo}></Title>

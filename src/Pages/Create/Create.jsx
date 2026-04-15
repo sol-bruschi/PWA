@@ -5,10 +5,11 @@ export const Create = ({ contenidos, setContenidos }) => {
   const navigate = useNavigate();
 
   const guardarPelicula = (datosDelForm) => {
+    console.log(datosDelForm)
     const peliculaFinal = {
       ...datosDelForm,
       id: Date.now(),
-      visto: false
+      vista: datosDelForm.vista ? true : false,
     };
     
     setContenidos(prevContenidos => {

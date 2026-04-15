@@ -16,7 +16,7 @@ export function App() {
   useEffect(() => {
     localStorage.setItem("listado-pwa", JSON.stringify(contenidos));
   }, [contenidos]);
-
+console.log("contenidos: ", contenidos)
   return (
     <BrowserRouter>
       <Header />
