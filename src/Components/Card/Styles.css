@@ -31,18 +31,20 @@
 /* Los ponemos en una línea para que no ocupen tanto espacio */
 .info-secundaria {
   display: flex;
+  flex-direction: column;
+  width: 50%;
   gap: 20px;
   color: #64748B; 
   font-weight: 500;
 }
 
 /* Estilo para la sinopsis */
-.sinopsis p {
-  color: #334155; 
-  font-size: 0.95rem;
-  line-height: 1.6; 
-  margin: 8px 0;
-}
+//.sinopsis p {
+//  color: #334155; 
+//  font-size: 0.95rem;
+//  line-height: 1.6; 
+//  margin: 8px 0;
+//}
 
 /* Los botones de acción (Editar/Eliminar) */
 .botones {

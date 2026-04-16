@@ -4,24 +4,34 @@ import { Title } from "./../Title/Title";
 import { useNavigate } from "react-router-dom";
 
 // a esta card le quiero pasar toda la info posible
-export const CardPrincipal = ({ pelicula, iconoTitulo }) => {
+export const CardPrincipal = ({ pelicula, iconoTitulo, eliminarPelicula }) => {
   const navigate = useNavigate();
 
   return (
     <div className="pelicula-card">
       <div className="imagen">
         {/* <img src={pelicula.url_imagen} alt={pelicula.titulo} /> */}
-        <img src={`https://picsum.photos/seed/${pelicula.id}/300/450`} alt={pelicula.titulo} />
+        <img
+          src={`https://picsum.photos/seed/${pelicula.id}/300/450`}
+          alt={pelicula.titulo}
+        />
       </div>
       <div className="card-header">
-        <Title text={pelicula.titulo}></Title>
+        <Title text={pelicula.titulo} icon={iconoTitulo}></Title>
+        <span className="contador-badge">
+          {pelicula.tipo}
+        </span>
+        <span>{"⭐".repeat(pelicula.rating)}</span>
       </div>
       <div className="info-secundaria">
         <div className="director">
-          <span>{pelicula.director}</span>
+          <span>Director: {pelicula.director}</span>
         </div>
         <div className="anio">
-          <span>{pelicula.anio}</span>
+          <span>Año de estreno: {pelicula.anio}</span>
+        </div>
+        <div className="genero">
+          <span>Género: {pelicula.genero}</span>
         </div>
       </div>
       <div className="botones">
@@ -31,7 +41,7 @@ export const CardPrincipal = ({ pelicula, iconoTitulo }) => {
         ></BotonAccion>
         <BotonAccion
           texto="Eliminar"
-          onClick={() => alert("Eliminar peli")}
+          onClick={() => eliminarPelicula(pelicula.id)}
         ></BotonAccion>
       </div>
     </div>
