@@ -98,6 +98,7 @@
 
 .boton-vista {
   position: absolute;
+  background-color: green;
   top: 10px; /* Separación desde arriba */
   right: 10px; /* Separación desde la derecha */
   z-index: 10; /* Asegura que esté por encima de la imagen */

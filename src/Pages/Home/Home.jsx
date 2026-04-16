@@ -4,8 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./Styles.css";
 import { baseDatos } from "./../../../basePelisSeries"; //base de ejemplo generada con mockaroo
+import { TbBackground } from "react-icons/tb";
 
-export const Home = ({ contenidos }) => {
+export const Home = ({ contenidos, setContenidos }) => {
   const navigate = useNavigate();
 
   /* filtros necesarios 
@@ -32,7 +33,7 @@ export const Home = ({ contenidos }) => {
   };
 
   //lógica de filtrado
-  const peliculasFiltradas = baseDatos.filter((pelicula) => {
+  const peliculasFiltradas = contenidos.filter((pelicula) => {
     // Filtro por Titulo
     const coincideTitulo = pelicula.titulo
       .toLowerCase()
@@ -65,6 +66,24 @@ export const Home = ({ contenidos }) => {
   //Luego de filtrar separo por estado (vista / por ver)
   const peliculasPorVer = peliculasFiltradas.filter((p) => p.vista === false);
   const peliculasVistas = peliculasFiltradas.filter((p) => p.vista === true);
+
+  //marcar como vista
+  function marcarVista(id) {
+    setContenidos((prevContenidos) =>
+      prevContenidos.map((p) =>
+        String(p.id) === String(id) ? { ...p, vista: true } : p,
+      ),
+    );
+  }
+
+  //eliminar peli
+  function eliminarPelicula(id) {
+    const confirmar = window.confirm("¿Seguro que querés eliminar esta película? (acción irreversible)");
+  if (!confirmar) return;
+    setContenidos((prevContenidos) =>
+      prevContenidos.filter((p) => String(p.id) !== String(id)),
+    );
+  }
 
   return (
     <div className="home-container">
@@ -156,17 +175,17 @@ export const Home = ({ contenidos }) => {
             <p className="mensaje-vacio">No hay películas pendientes.</p>
           ) : (
             peliculasPorVer.map((peli) => (
-              <div key={peli.id}>
+              <div key={peli.id} className="contenedor-peli">
                 <BotonAccion
                   texto="Marcar como Vista"
-                  onClick={() => setFavorito(peli.id)}
+                  onClick={() => marcarVista(peli.id)}
                   className="boton-vista"
                 />
                 <CardPrincipal
                   key={peli.id}
                   pelicula={peli}
-                  iconoTitulo={peli.tipo === "serie" ? "📺" : "🎬"}
-                  className="contenedor-peli"
+                  iconoTitulo={peli.tipo === "Serie" ? "📺" : "🎬"}
+                  eliminarPelicula={eliminarPelicula}
                 />
               </div>
             ))
@@ -190,6 +209,7 @@ export const Home = ({ contenidos }) => {
                 key={peli.id}
                 pelicula={peli}
                 iconoTitulo={peli.tipo === "serie" ? "📺" : "🎬"}
+                eliminarPelicula={eliminarPelicula}
               />
             ))
           )}

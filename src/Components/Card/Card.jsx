@@ -4,17 +4,20 @@ import { Title } from "./../Title/Title";
 import { useNavigate } from "react-router-dom";
 
 // a esta card le quiero pasar toda la info posible
-export const CardPrincipal = ({ pelicula, iconoTitulo }) => {
+export const CardPrincipal = ({ pelicula, iconoTitulo, eliminarPelicula }) => {
   const navigate = useNavigate();
 
   return (
     <div className="pelicula-card">
       <div className="imagen">
         {/* <img src={pelicula.url_imagen} alt={pelicula.titulo} /> */}
-        <img src={`https://picsum.photos/seed/${pelicula.id}/300/450`} alt={pelicula.titulo} />
+        <img
+          src={`https://picsum.photos/seed/${pelicula.id}/300/450`}
+          alt={pelicula.titulo}
+        />
       </div>
       <div className="card-header">
-        <Title text={pelicula.titulo}></Title>
+        <Title text={pelicula.titulo} icon={iconoTitulo}></Title>
       </div>
       <div className="info-secundaria">
         <div className="director">
@@ -31,7 +34,7 @@ export const CardPrincipal = ({ pelicula, iconoTitulo }) => {
         ></BotonAccion>
         <BotonAccion
           texto="Eliminar"
-          onClick={() => alert("Eliminar peli")}
+          onClick={() => eliminarPelicula(pelicula.id)}
         ></BotonAccion>
       </div>
     </div>
