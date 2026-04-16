@@ -4,8 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./Styles.css";
 import { baseDatos } from "./../../../basePelisSeries"; //base de ejemplo generada con mockaroo
+import { TbBackground } from "react-icons/tb";
 
-export const Home = ({ contenidos }) => {
+export const Home = ({ contenidos, setContenidos }) => {
   const navigate = useNavigate();
 
   /* filtros necesarios 
@@ -66,6 +67,24 @@ export const Home = ({ contenidos }) => {
   const peliculasPorVer = peliculasFiltradas.filter((p) => p.vista === false);
   const peliculasVistas = peliculasFiltradas.filter((p) => p.vista === true);
 
+  //marcar como vista
+  function marcarVista(id) {
+    setContenidos((prevContenidos) =>
+      prevContenidos.map((p) =>
+        String(p.id) === String(id) ? { ...p, vista: true } : p,
+      ),
+    );
+  }
+
+  //eliminar peli
+  function eliminarPelicula(id) {
+    const confirmar = window.confirm("¿Seguro que querés eliminar esta película? (acción irreversible)");
+  if (!confirmar) return;
+    setContenidos((prevContenidos) =>
+      prevContenidos.filter((p) => String(p.id) !== String(id)),
+    );
+  }
+
   return (
     <div className="home-container">
       <header className="home-header">
@@ -93,7 +112,8 @@ export const Home = ({ contenidos }) => {
             Género:
             <select
               value={filtroGenero}
-              onChange={(e) => setFiltroGenero(e.target.value)}            >
+              onChange={(e) => setFiltroGenero(e.target.value)}
+            >
               <option value="">Todos</option>
               <option value="Acción">Acción</option>
               <option value="Comedia">Comedia</option>
@@ -146,18 +166,28 @@ export const Home = ({ contenidos }) => {
         <section className="columna">
           <div className="columna-titulo">
             <span>Por Ver</span>
-            <span className="contador-badge">{peliculasPorVer.length} títulos</span>
+            <span className="contador-badge">
+              {peliculasPorVer.length} títulos
+            </span>
           </div>
-          
+
           {peliculasPorVer.length === 0 ? (
             <p className="mensaje-vacio">No hay películas pendientes.</p>
           ) : (
             peliculasPorVer.map((peli) => (
-              <CardPrincipal
-                key={peli.id}
-                pelicula={peli}
-                iconoTitulo={peli.tipo === "serie" ? "📺" : "🎬"}
-              />
+              <div key={peli.id} className="contenedor-peli">
+                <BotonAccion
+                  texto="Marcar como Vista"
+                  onClick={() => marcarVista(peli.id)}
+                  className="boton-vista"
+                />
+                <CardPrincipal
+                  key={peli.id}
+                  pelicula={peli}
+                  iconoTitulo={peli.tipo === "Serie" ? "📺" : "🎬"}
+                  eliminarPelicula={eliminarPelicula}
+                />
+              </div>
             ))
           )}
         </section>
@@ -166,9 +196,11 @@ export const Home = ({ contenidos }) => {
         <section className="columna">
           <div className="columna-titulo">
             <span>Visto</span>
-            <span className="contador-badge">{peliculasVistas.length} títulos</span>
+            <span className="contador-badge">
+              {peliculasVistas.length} títulos
+            </span>
           </div>
-          
+
           {peliculasVistas.length === 0 ? (
             <p className="mensaje-vacio">No hay películas vistas todavía.</p>
           ) : (
@@ -177,6 +209,7 @@ export const Home = ({ contenidos }) => {
                 key={peli.id}
                 pelicula={peli}
                 iconoTitulo={peli.tipo === "serie" ? "📺" : "🎬"}
+                eliminarPelicula={eliminarPelicula}
               />
             ))
           )}

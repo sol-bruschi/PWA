@@ -2,7 +2,7 @@ import { Formulario } from "./../../Components/Formulario/Formulario";
 import { baseDatos } from "../../../basePelisSeries";
 import { useNavigate, useParams } from "react-router-dom";
 
-export const Edit = ({contenidos}) => {
+export const Edit = ({ contenidos, setContenidos }) => {
   const { id } = useParams(); //viene por url el id
   const navigate = useNavigate();
   const peliculaAEditar = contenidos.find(
@@ -10,12 +10,16 @@ export const Edit = ({contenidos}) => {
   );
 
   // Esta función se ejecuta al hacer click en "Guardar Cambios"
-  const actualizarPelicula = (datosEditados) => {
-    console.log("¡Película actualizada!", datosEditados);
+  const actualizarPelicula = (datosDelForm) => {
+    setContenidos((prevContenidos) =>
+      prevContenidos.map((p) =>
+        String(p.id) === String(id) ? { ...p, ...datosDelForm } : p,
+      ),
+    );
     navigate("/");
   };
 
-if (!peliculaAEditar) {
+  if (!peliculaAEditar) {
     return (
       <div className="home-container">
         <h2>Película no encontrada</h2>
