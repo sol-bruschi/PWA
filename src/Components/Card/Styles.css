@@ -28,17 +28,11 @@
 /* Los ponemos en una línea para que no ocupen tanto espacio */
 .info-secundaria {
   display: flex;
+  flex-direction: column;
+  width: 50%;
   gap: 20px;
   color: #6b7280; /* Gris de la muestra */
   font-size: 0.9rem;
-}
-
-/* Estilo para la sinopsis */
-.sinopsis p {
-  color: #4b5563;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  margin: 8px 0;
 }
 
 /* Los botones de acción (Editar/Eliminar) */

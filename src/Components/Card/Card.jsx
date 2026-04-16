@@ -18,13 +18,20 @@ export const CardPrincipal = ({ pelicula, iconoTitulo, eliminarPelicula }) => {
       </div>
       <div className="card-header">
         <Title text={pelicula.titulo} icon={iconoTitulo}></Title>
+        <span className="contador-badge">
+          {pelicula.tipo}
+        </span>
+        <span>{"⭐".repeat(pelicula.rating)}</span>
       </div>
       <div className="info-secundaria">
         <div className="director">
-          <span>{pelicula.director}</span>
+          <span>Director: {pelicula.director}</span>
         </div>
         <div className="anio">
-          <span>{pelicula.anio}</span>
+          <span>Año de estreno: {pelicula.anio}</span>
+        </div>
+        <div className="genero">
+          <span>Género: {pelicula.genero}</span>
         </div>
       </div>
       <div className="botones">
