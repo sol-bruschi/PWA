@@ -38,13 +38,13 @@
   font-weight: 500;
 }
 
-/* Estilo para la sinopsis */
-//.sinopsis p {
-//  color: #334155; 
-//  font-size: 0.95rem;
-//  line-height: 1.6; 
-//  margin: 8px 0;
-//}
+/* Estilo para la sinopsis 
+.sinopsis p {
+  color: #334155; 
+  font-size: 0.95rem;
+  line-height: 1.6; 
+  margin: 8px 0;
+}*/
 
 /* Los botones de acción (Editar/Eliminar) */
 .botones {
