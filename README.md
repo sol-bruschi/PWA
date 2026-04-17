@@ -1,16 +1,47 @@
-# React + Vite
+# 🎬 PWA - Catálogo de Películas y Series
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Es un gestor de peliculas y series desarrollada con **React** y **Vite**. La aplicación permite navegar por un catálogo de películas, ver detalles y disfrutar de una interfaz optimizada para dispositivos móviles y escritorio.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 📸 Vista Previa del Proyecto
 
-## React Compiler
+A continuación se muestran capturas de pantalla de la interfaz:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Pantalla Principal
+Aquí es donde se listan todas las películas y series disponibles.
+![Home](./screenshots/home.png)
 
-## Expanding the ESLint configuration
+### Tarjetas "Por ver" y "Visto"
+Se visualizan tarjetas con peliculas y series, con su nombre, rating, año, director, genero e imagen.
+![Tarjetas](./screenshots/tarjetas.png)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Versión Mobile (PWA)
+Así se ve la aplicación instalada en un celular.
+![Movil](./screenshots/movil.png)
+
+
+## 🛠️ Tecnologías Utilizadas
+
+* **React** (Frontend Library)
+* **Vite** (Build Tool)
+* **React Icons** (Iconografía)
+* **CSS3** (Estilos personalizados)
+* **Vercel** (Despliegue y Hosting)
+
+---
+
+## 🚀 Instalación y Configuración Local
+
+Si querés correr este proyecto en tu computadora, seguí estos pasos:
+
+### 1. Clonar el repositorio
+git clone https://github.com/sol-bruschi/PWA.git
+
+### 2. Instalar las dependencias
+npm install
+
+### 3. Ejecutar el proyecto en desarrollo
+npm run dev
+
+### 4. Generar la versión de producción
+npm run build
